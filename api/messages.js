@@ -1,14 +1,4 @@
-const { neon } = require("@neondatabase/serverless");
-
-function getSql() {
-  // Prefer a dedicated name so this chat can share a Vercel project
-  // with another app that already uses POSTGRES_* / DATABASE_URL.
-  const url = process.env.OURS_DATABASE_URL || process.env.DATABASE_URL;
-  if (!url) {
-    throw new Error("OURS_DATABASE_URL is not set");
-  }
-  return neon(url);
-}
+const { getSql } = require("../lib/db");
 
 function mapRow(row) {
   return {
