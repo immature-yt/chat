@@ -307,12 +307,16 @@ body {
   position: fixed;
   inset: 0;
   z-index: 20;
-  display: grid;
+  display: none;
   place-items: center;
   padding: 1.25rem;
   background: rgba(42, 33, 28, 0.35);
   backdrop-filter: blur(6px);
   animation: fade 0.2s ease both;
+}
+
+.confirm:not([hidden]) {
+  display: grid;
 }
 
 .confirm-card {
