@@ -6,14 +6,17 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const messages = require("./api/messages");
+const setup = require("./api/setup");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
 app.all("/api/messages", (req, res) => messages(req, res));
+app.all("/api/setup", (req, res) => setup(req, res));
 app.use(express.static(__dirname));
 
 app.listen(PORT, () => {
   console.log(`Ours (Neon) at http://localhost:${PORT}`);
 });
+
