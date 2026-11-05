@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <section id="gate" class="gate">
+      <p class="brand">Ours</p>
+      <h1>Who’s writing?</h1>
+      <p class="lede">Just us. Pick your side and start talking.</p>
+      <div class="who">
+        <button type="button" class="who-btn" data-who="him">Him</button>
+        <button type="button" class="who-btn" data-who="her">Her</button>
+      </div>
+    </section>
+
+    <main id="app" class="app" hidden>
+      <header class="top">
+        <div>
+          <p class="brand brand-sm">Ours</p>
+          <p class="as">You’re writing as <span id="as-label"></span></p>
+        </div>
+        <button type="button" id="clear-btn" class="clear-btn" title="Delete every message">
+          Delete chats
+        </button>
+      </header>
+
+      <div id="thread" class="thread" aria-live="polite"></div>
+
+      <form id="composer" class="composer">
+        <label class="sr-only" for="message-input">Message</label>
+        <textarea
+          id="message-input"
+          rows="1"
+          placeholder="Say something…"
+          maxlength="2000"
+          autocomplete="off"
+        ></textarea>
+        <button type="submit" class="send-btn">Send</button>
+      </form>
+    </main>
+
+    <div id="confirm" class="confirm" hidden>
+      <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <h2 id="confirm-title">Delete every chat?</h2>
+        <p>This clears the whole thread for both of you. Instantly. No undo.</p>
+        <div class="confirm-actions">
+          <button type="button" id="confirm-cancel" class="ghost-btn">Keep them</button>
+          <button type="button" id="confirm-delete" class="danger-btn">Delete now</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
